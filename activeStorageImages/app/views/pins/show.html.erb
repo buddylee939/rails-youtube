@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <%= image_tag @pin.banner %>
+</div>
+
+<div style="width:400px; height: auto">
+  <%= link_to image_tag(@pin.image, style: 'width:100%'), @pin.image %>
+</div>
+<div>
+  <%= image_tag @pin.thumbnail %>
+</div>
+
+<% @pin.picts.each do |pict| %>
+  <div style="width:600px; height: auto">
+    <%= image_tag pict, style: 'width:100%' %>
+    <%= link_to 'Remove', delete_pict_attachment_pin_url(pict), method: :delete, data: { confirm: 'Are you sure? '} %>
+  </div>
+<% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @pin.caption %>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @video.title %>
+</p>
+
+<div style="width:500px">
+  <%= image_tag @video.thumbnail, style: 'width:100%' %>
+</div>
+
+<div style="width:500px">
+  <%= video_tag(url_for(@video.clip), style: 'width:100%', controls: '' ) %>
+</div>
+
+<p>
+  <strong>Description:</strong>
+  <%= @video.description %>
+</p>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
+ <hr>
+
+ <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+poster="<%= url_for(@video.thumbnail) %>" data-setup="{}">
+  <source src="<%= url_for(@video.clip) %>" type='video/mp4'>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+</video>
