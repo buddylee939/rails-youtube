@@ -139,4 +139,6 @@ belongs_to :user
   <td><%= link_to 'Edit', edit_post_path(post) %></td>
   <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
-```    
+```
+
+# the end

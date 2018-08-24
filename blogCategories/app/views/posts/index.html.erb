@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts | <%= link_to 'New Category', new_category_path %></h1>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<h2>All Categories</h2>
+<% Category.all.each do |cat| %>
+  <%= link_to cat.name, posts_path(category: cat.name) %> <br>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<h2>Categories only in navbar</h2>
+<% Category.where(display_in_navbar: true).each do |cat| %>
+  <%= link_to cat.name, posts_path(category: cat.name) %> <br>
+<% end %>
+<br> 
+<br> 
+<br> 
+<br> 
+<hr>
+<h2>All Posts</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= truncate(post.body, length: 20) %></td>
+        <td><%= post.category.name %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
